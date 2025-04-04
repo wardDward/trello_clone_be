@@ -45,7 +45,7 @@ class AuthController extends Controller
             'password' => 'required'
         ]);
 
-        if (!Auth::attempt(['email' => $data['email'],'password' => $data['password']])) {
+        if (!Auth::attempt(['email' => $data['email'], 'password' => $data['password']])) {
             throw ValidationException::withMessages([
                 'email' => 'Invalid Credetials. Please Try Again.'
             ]);
@@ -61,4 +61,5 @@ class AuthController extends Controller
         auth()->user()->currentAccessToken()->delete();
         return response()->json([['message' => 'User logged out']]);
     }
+    
 }
